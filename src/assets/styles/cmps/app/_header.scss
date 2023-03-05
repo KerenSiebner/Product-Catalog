@@ -11,8 +11,10 @@ header {
             filter: invert(1);
             margin-right: 12px;
         }
-
-        h2 {
-        }
     }
+}
+
+.App-header {
+    display: flex;
+    justify-content: space-between;
 }

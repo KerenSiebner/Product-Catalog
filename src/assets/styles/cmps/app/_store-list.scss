@@ -16,7 +16,12 @@
             align-items: center;
             justify-content: space-around;
             margin-bottom: 15px;
-            img {}
+            img {
+                max-width: 74%;
+            }
+        }
+        h5{
+            width: em(204px);
         }
     }
 }

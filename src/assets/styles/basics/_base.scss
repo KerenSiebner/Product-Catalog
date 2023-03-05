@@ -22,8 +22,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  margin: 0 0 0.6em;
+h6,
+p {
   font-family: Poppins-Bold;
   font-weight: 700;
 }
@@ -72,7 +72,6 @@ h1 {
   vertical-align: baseline;
   text-align: left;
   // line-height: em(56px);
-  margin-top: 56px;
 }
 
 h2 {
@@ -81,10 +80,27 @@ h2 {
   line-height: 36px;
 }
 
-h3{
+h3 {
   color: $clr-txt-2;
   font-size: em(20px);
+  margin-bottom: 0;
 }
+
+h4 {
+  color: $clr-txt-2;
+  font-size: em(12px);
+  margin-top: em(5px);
+  margin-bottom: em(5px);
+}
+h5 {
+  color: $clr-txt-2;
+  font-size: em(12px);
+  font-family: Poppins-Light;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
 
 h6 {
   font-size: 1em;
@@ -103,4 +119,5 @@ hr {
 p {
   font-size: em(20px);
   text-align: left;
+  margin-bottom: 30px;
 }
