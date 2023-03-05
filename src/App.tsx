@@ -1,24 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { StoreList } from './cmps/store-list';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a href="">
+          <img src="	https://s3-media0.fl.yelpcdn.com/assets/public/burst_white.yji-69d3bd788c1013a1c15e.svg" alt="" width="54" className="logo" />
+          <h2 >Gifty</h2>
         </a>
       </header>
+      <article>
+        <h1>Shop for Gift Cards</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum tenetur, officia, dignissimos iste perspiciatis voluptates iusto exercitationem labore numquam commodi totam a fuga quis quod quisquam cum harum unde vero reprehenderit sed culpa? Voluptatum delectus pariatur maiores dolore animi, labore, expedita aliquid ducimus esse enim dolorum fugit sequi velit porro.</p>
+
+      </article>
+      <StoreList />
     </div>
   );
 }
