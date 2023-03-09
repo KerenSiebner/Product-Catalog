@@ -1,0 +1,17 @@
+.gift-details-container{
+
+    display: flex;
+    .select-gift-card-container{
+        width: 50%;
+        background-color:rgba(128, 128, 128, 0.184);
+    
+        img{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    
+    .recepient-form-container{
+        width: 50%;
+    }
+}

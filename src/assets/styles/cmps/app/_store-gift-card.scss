@@ -1,0 +1,15 @@
+.store-gift-card {
+    height: em(120px);
+    width: em(204px);
+    border: 1px solid rgba(128, 128, 128, 0.182);
+    box-shadow: 0 4px 10px -3px #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+
+    img {
+        max-width: 74%;
+    }
+}

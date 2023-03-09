@@ -6,10 +6,18 @@ header {
         align-items: center;
         text-decoration: none;
         color: $clr-txt-1;
+        height: fit-content;
+
+        &.active {
+            background-color: $clr-dark-red;
+            border-radius: 43px;
+            color: rgba(255, 255, 255, 1);
+        }
 
         .logo {
             filter: invert(1);
             margin-right: 12px;
+            // color: $clr-dark-red;
         }
     }
 }
@@ -17,4 +25,5 @@ header {
 .App-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }

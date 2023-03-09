@@ -1,0 +1,19 @@
+.filters-container {
+    padding: 30px 0;
+    form{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    select, input {
+        border-radius: 5px;
+        margin: 0 32px 1px 0;
+        border: 1px solid #DBDBDB;
+        font-family: Open-Sans;
+        width: 178px;
+        padding: 5px;
+    }
+    input{
+        margin-right: 0;
+    }
+}
