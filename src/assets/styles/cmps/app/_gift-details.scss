@@ -1,17 +1,58 @@
-.gift-details-container{
+.gift-details-container {
 
     display: flex;
-    .select-gift-card-container{
+
+    .select-gift-card-container {
         width: 50%;
-        background-color:rgba(128, 128, 128, 0.184);
-    
-        img{
+        background-color: rgba(128, 128, 128, 0.184);
+
+        .store-logo {
             display: flex;
             flex-direction: row;
+            width: 100px;
         }
     }
-    
-    .recepient-form-container{
+
+    .recepient-form-container {
         width: 50%;
+
+        form {
+            font-family: inherit;
+            font-size: 1em;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            row-gap: 20px;
+
+            span {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                ;
+            }
+
+            .submit-btn {
+                font-size: 1.2em;
+                letter-spacing: 0.1em;
+                font-family: Poppins-Medium;
+                font-weight: 500;
+                width: fit-content;
+                background-color: $clr-txt-3;
+                border-radius: 43px;
+                color: rgba(255, 255, 255, 1);
+                border: none;
+                padding: 10px 15px;
+                justify-self: end;
+            }
+
+            input,textarea {
+                border-radius: 3px;
+                border: 2px solid rgba(0, 0, 0, 0.1);
+                padding: 5px
+            }
+            textarea{
+                resize: none;
+                height: 100px;
+            }
+        }
     }
 }
