@@ -1,25 +1,20 @@
-import { Route, Routes, useLocation, Router } from "react-router-dom";
-import App from "./App";
-import { AppHeader } from "./cmps/app-header";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import RootLayout from "./layouts/root-layout";
+import { GiftDetails } from "./cmps/gift-details";
+import { Home } from "./pages/home";
 
 
-
-// Router = (props: any)=>{
-//     return <>{props.children}</>
-// }
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/customize/:storeId" element={<GiftDetails />} />
+        </Route>
+    )
+)
 
 export function RootCmp() {
-    // const location = useLocation()
     return (
-        <div className="App">
-            <AppHeader />
-            <main>
-                {/* <Router > */}
-                    <Routes >
-                        <Route path="/" element={<App />} />
-                    </Routes>
-                {/* </Router> */}
-            </main>
-        </div>
+        <RouterProvider router={router} />
     )
 }

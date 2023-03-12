@@ -1,5 +1,4 @@
-import { ClickProps } from "../models/click-props";
-import { Store } from "../models/store";
+import { storeService } from '../services/store-service';
 import { GiftCardPreview } from "./gift-card-preview";
 import {
     Formik,
@@ -9,6 +8,7 @@ import {
     Field,
     FieldProps,
 } from 'formik';
+import { useParams } from "react-router-dom";
 
 interface MyFormValues {
     senderFullName: string,
@@ -18,9 +18,16 @@ interface MyFormValues {
     recipeintEmail: string,
 }
 
+
 // export function GiftDetails({selectedStore}:Store, {backToStoreList}:any){
-export function GiftDetails({ selectedStore }: Store) {
-    const logoUrl = selectedStore.RegularStoreLogo
+// export function GiftDetails({ selectedStore }: Store) {
+export function GiftDetails() {
+    const { storeId }: any = useParams()
+    console.log(' type of storeId',+storeId)
+    const selectedStore = storeService.getStoreById(+storeId)
+    console.log('selectedStore', selectedStore)
+
+    const logoUrl = selectedStore?.RegularStoreLogo
     const initialValues: MyFormValues = { senderFullName: '', senderEmail: '', personalMsg: '', recipeintFullName: '', recipeintEmail: '' };
 
     // function onClickBack(){
@@ -30,11 +37,11 @@ export function GiftDetails({ selectedStore }: Store) {
     return <div className="gift-details-container">
         <div className="select-gift-card-container">
             <img className="store-logo" src={logoUrl} alt="" />
-            <span>{selectedStore.StoreName} eGift Card</span>
-            <GiftCardPreview store={selectedStore} />
-            <h5>{selectedStore.StoreText}</h5>
+            <span>{selectedStore?.StoreName} eGift Card</span>
+            <GiftCardPreview store={selectedStore!} />
+            <h5>{selectedStore?.StoreText}</h5>
             <h4>Select gift card amount</h4>
-            {selectedStore.Products?.map((product, idx) => (<button key={idx}>
+            {selectedStore?.Products?.map((product, idx) => (<button key={idx}>
                 {Math.round(product.Price)}
             </button>))}
             {/* <a href="">Gift card details</a> */}
