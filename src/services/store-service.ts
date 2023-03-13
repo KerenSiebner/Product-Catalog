@@ -10,7 +10,7 @@ export const storeService = {
 
 function getStores(storeFilter = getDefaultStoreFilter()) {
     const stores = data.Stores
-    if (JSON.stringify(storeFilter) === JSON.stringify(getDefaultStoreFilter())) {
+    if (JSON.stringify(storeFilter) === JSON.stringify(getDefaultStoreFilter()) || storeFilter.Store==='') {
         return stores
     }
     if (storeFilter.Search) {
@@ -33,7 +33,7 @@ function getStores(storeFilter = getDefaultStoreFilter()) {
                 break
             case ("100plus"): { }
                 break
-            default: console.log('no budget')
+            default: ;
         }
     }
     if (storeFilter.Gender) {
@@ -42,15 +42,12 @@ function getStores(storeFilter = getDefaultStoreFilter()) {
                 break
             case ("Her"): { }
                 break
-            default: console.log('no budget')
-        }
-        
+            default:
+        }     
     }
     if (storeFilter.Store) {
-
+       return stores.filter((store)=>store.StoreName === storeFilter.Store )
     }
-
-
 }
 
 function getStorePriceRange(storeId: number) {

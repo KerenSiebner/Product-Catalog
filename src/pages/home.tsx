@@ -8,7 +8,6 @@ import { storeService } from "../services/store-service"
 export function Home() {
     const [storeFilter, setStoreFilter] = useState(storeService.getDefaultStoreFilter())
     const [stores, setStores] = useState(storeService.getStores(storeFilter))
-    console.log('storeFilter', storeFilter)
 
     useEffect(() => {
         setStores(storeService.getStores(storeFilter))
@@ -17,10 +16,8 @@ export function Home() {
     function updateFilter(storeFilter: FilterValues) {
         setStoreFilter(storeFilter)
         const filteredStores = storeService.getStores(storeFilter)
-        console.log('filteredStores', filteredStores)
-        // setStores(storeService.getStores(storeFilter))
     }
-    // const stores = storeService.getStores()
+    
     return (
         <Fragment>
 

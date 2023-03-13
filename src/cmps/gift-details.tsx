@@ -1,3 +1,4 @@
+import { IoIosArrowBack } from 'react-icons/io'
 import { storeService } from '../services/store-service';
 import { GiftCardPreview } from "./gift-card-preview";
 import {
@@ -8,7 +9,8 @@ import {
     Field,
     FieldProps,
 } from 'formik';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { isButtonElement } from 'react-router-dom/dist/dom';
 
 interface MyFormValues {
     senderFullName: string,
@@ -30,22 +32,23 @@ export function GiftDetails() {
     const logoUrl = selectedStore?.RegularStoreLogo
     const initialValues: MyFormValues = { senderFullName: '', senderEmail: '', personalMsg: '', recipeintFullName: '', recipeintEmail: '' };
 
-    // function onClickBack(){
-    //     backToStoreList()
-    // }
+    function getGiftAmounts() {
+        let giftAmounts = selectedStore?.Products?.map((product => { return Math.round(product.Price) }))
+        let uniqueGiftAmounts = giftAmounts?.filter((giftAmount, idx) => { return giftAmounts?.indexOf(giftAmount) === idx })
+        return uniqueGiftAmounts?.map((giftAmount, idx) => { return <button key={idx} className="gift-amount-btn">{giftAmount}</button> })
+    }
 
     return <div className="gift-details-container">
         <div className="select-gift-card-container">
             <div className='select-gift-card-header'>
+                <Link to='/'><IoIosArrowBack className='back-btn' /></Link>
                 <img className="store-logo" src={logoUrl} alt="" />
                 <span>{selectedStore?.StoreName} eGift Card</span>
             </div>
             <GiftCardPreview store={selectedStore!} />
             <h5>{selectedStore?.StoreText}</h5>
             <h4>Select gift card amount</h4>
-            {selectedStore?.Products?.map((product, idx) => (<button key={idx} className="gift-amount-btn">
-                {Math.round(product.Price)}
-            </button>))}
+            {getGiftAmounts()}
             {/* <a href="">Gift card details</a> */}
         </div>
         <div className="recepient-form-container">
@@ -78,6 +81,5 @@ export function GiftDetails() {
             </Formik>
 
         </div>
-        {/* <button onClick={onClickBack}>Back</button>  */}
     </div>
 }

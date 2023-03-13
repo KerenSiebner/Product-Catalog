@@ -5,14 +5,14 @@ import { storeService } from '../services/store-service';
 
 export function Filters({ updateFilter, stores }: any) {
     const [storeFilter, setStoreFilter] = useState(storeService.getDefaultStoreFilter())
-    console.log('storeFilter', storeFilter)
+    const storeUnfiltered = storeService.getStores()
 
     useEffect(() => {
         updateFilter(storeFilter)
     }, [storeFilter])
 
 
-    function handleChange(ev: React.FormEvent<HTMLInputElement>) {
+    function handleChange(ev: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLSelectElement>) {
         const { name, value } = ev.currentTarget
         setStoreFilter((prevStoreFilter) => ({ ...prevStoreFilter, [name]: value }))
     }
@@ -44,12 +44,11 @@ export function Filters({ updateFilter, stores }: any) {
                 <option value="Her">Her</option>
                 <option value="">Both</option>
             </select>
-            <select name="Store" className="store-select">
+            <select name="Store" className="store-select" onChange={handleChange}>
                 <option value="">Select Store</option>
-                {stores?.map((store: any, idx: Key) => (
-                    <option key={idx} value={store.StoreName}
-                    style={{backgroundImage: `url(${store.RegularStoreLogo})`}}
-                    >
+                {storeUnfiltered?.map((store: any, idx: Key) => (
+                    <option key={idx} value={store.Store}
+                    style={{backgroundImage: `url(${store.RegularStoreLogo})`}} >
                         {/* <img src={store.RegularStoreLogo} alt="store-logo" /> */}
                         {store.StoreName}</option>
                 ))}
