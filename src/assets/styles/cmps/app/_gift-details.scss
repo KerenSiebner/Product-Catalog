@@ -1,20 +1,47 @@
 .gift-details-container {
 
     display: flex;
+    justify-content: space-between;
 
     .select-gift-card-container {
         width: 50%;
         background-color: rgba(128, 128, 128, 0.184);
+        padding: 20px;
 
         .store-logo {
             display: flex;
             flex-direction: row;
-            width: 100px;
+            max-height: 30px;
+        }
+
+        .select-gift-card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gift-amount-btn {
+            cursor: pointer;
+            font-size: 1em;
+            font-family: Poppins-Bold;
+            border: 1px solid $clr-txt-4;
+            color: $clr-txt-4;
+            background-color: $clr-light-blue;
+            border-radius: 50%;
+            width: 40px;
+            aspect-ratio: 1/1;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        h4 {
+            font-size: 1em;
+            margin-bottom: 20px;
         }
     }
 
     .recepient-form-container {
-        width: 50%;
+        width: 45%;
 
         form {
             font-family: inherit;
@@ -22,6 +49,10 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             row-gap: 20px;
+
+            label {
+                justify-self: start;
+            }
 
             span {
                 display: flex;
@@ -44,12 +75,14 @@
                 justify-self: end;
             }
 
-            input,textarea {
+            input,
+            textarea {
                 border-radius: 3px;
                 border: 2px solid rgba(0, 0, 0, 0.1);
                 padding: 5px
             }
-            textarea{
+
+            textarea {
                 resize: none;
                 height: 100px;
             }

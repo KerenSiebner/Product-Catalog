@@ -1,10 +1,26 @@
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { Filters } from "../cmps/filters"
 import { StoreList } from "../cmps/store-list"
 import { ClickProps } from "../models/click-props"
+import { FilterValues } from "../models/filter-values"
 import { storeService } from "../services/store-service"
 
 export function Home() {
+    const [storeFilter, setStoreFilter] = useState(storeService.getDefaultStoreFilter())
+    const [stores, setStores] = useState(storeService.getStores(storeFilter))
+    console.log('storeFilter', storeFilter)
+
+    useEffect(() => {
+        setStores(storeService.getStores(storeFilter))
+    }, [storeFilter])
+
+    function updateFilter(storeFilter: FilterValues) {
+        setStoreFilter(storeFilter)
+        const filteredStores = storeService.getStores(storeFilter)
+        console.log('filteredStores', filteredStores)
+        // setStores(storeService.getStores(storeFilter))
+    }
+    // const stores = storeService.getStores()
     return (
         <Fragment>
 
@@ -14,8 +30,8 @@ export function Home() {
                     voluptates iusto exercitationem labore numquam commodi totam a fuga quis quod quisquam cum harum unde vero reprehenderit sed culpa?
                     Voluptatum delectus pariatur maiores dolore animi, labore, expedita aliquid ducimus esse enim dolorum fugit sequi velit porro.</p>
             </article>
-            <Filters />
-            <StoreList />
+            <Filters updateFilter={updateFilter} stores={stores} />
+            <StoreList stores={stores} />
         </Fragment>
     )
 }

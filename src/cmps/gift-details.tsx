@@ -23,7 +23,7 @@ interface MyFormValues {
 // export function GiftDetails({ selectedStore }: Store) {
 export function GiftDetails() {
     const { storeId }: any = useParams()
-    console.log(' type of storeId',+storeId)
+    console.log(' type of storeId', +storeId)
     const selectedStore = storeService.getStoreById(+storeId)
     console.log('selectedStore', selectedStore)
 
@@ -36,12 +36,14 @@ export function GiftDetails() {
 
     return <div className="gift-details-container">
         <div className="select-gift-card-container">
-            <img className="store-logo" src={logoUrl} alt="" />
-            <span>{selectedStore?.StoreName} eGift Card</span>
+            <div className='select-gift-card-header'>
+                <img className="store-logo" src={logoUrl} alt="" />
+                <span>{selectedStore?.StoreName} eGift Card</span>
+            </div>
             <GiftCardPreview store={selectedStore!} />
             <h5>{selectedStore?.StoreText}</h5>
             <h4>Select gift card amount</h4>
-            {selectedStore?.Products?.map((product, idx) => (<button key={idx}>
+            {selectedStore?.Products?.map((product, idx) => (<button key={idx} className="gift-amount-btn">
                 {Math.round(product.Price)}
             </button>))}
             {/* <a href="">Gift card details</a> */}
